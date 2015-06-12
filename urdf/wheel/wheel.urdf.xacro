@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:property name="wheel_radius" value="0.0762" />
+	<xacro:property name="wheel_height" value="0.0381" />
+	<xacro:property name="wheel_mass" value="1.20" />
+	
+	<xacro:macro name="wheel" params="prefix *origin parent">
+	
+		<link name="${prefix}_wheel_link">
+                  <mass value="${wheel_mass}"/>
+                   <xacro:inertial_template mass="${wheel_mass}" length="${wheel_height}" width="${wheel_radius}" height="${wheel_height}"/>
+		  <visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+                          <cylinder length="${wheel_height}" radius="${wheel_radius}" />
+			  <!-- <mesh filename="package://talos_description/urdf/wheel/wheel.stl" scale="${scale} ${scale} ${scale}" /> -->
+			</geometry>
+			<material name="white"/>
+		  </visual>
+		  <collision>
+                        <origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+			  <cylinder length="${wheel_height}" radius="${wheel_radius}" />
+			</geometry>
+		  </collision>
+		</link>
+
+               <joint name="${prefix}_wheel_joint" type="continuous">
+                   <xacro:insert_block name="origin"/>
+                   <child link="${prefix}_wheel_link"/>
+                   <parent link="${parent}"/>
+                   <axis xyz="0 1 0" rpy="0 0 0"/>
+                   <limit effort="100"
+                          velocity="100" />
+                   <joint_properties damping="0.0"
+                                     friction="0.0" />
+               </joint>
+
+               <gazebo reference="${prefix}_wheel_link">
+                     <selfCollide>true</selfCollide>
+		     <!-- <mu1 value="1.0"/>
+	             <mu2 value="1.0"/>
+		     <kp value="100000.0" />
+	             <kd value="1.0" /> -->
+	             <!-- <fdir1 value="1 0 0"/> -->
+	       </gazebo>
+		
+	</xacro:macro>
+
+</robot>

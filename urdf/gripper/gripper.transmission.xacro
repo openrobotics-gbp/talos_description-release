@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="talos_gripper_transmission" params="prefix">
+
+    <transmission name="${prefix}arm_wrist_to_gripper_base_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}arm_wrist_to_gripper_base">
+       <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}arm_wrist_to_gripper_base_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  
+    <transmission name="${prefix}gripper_stationary_claw_to_gripper_movable_claw_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}gripper_stationary_claw_to_gripper_movable_claw">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}gripper_stationary_claw_to_gripper_movable_claw_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </actuator>
+    </transmission>
+
+  </xacro:macro>
+
+</robot>

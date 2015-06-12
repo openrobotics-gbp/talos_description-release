@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="talos_torso_transmission" params="prefix">
+
+    <transmission name="${prefix}base_to_torso_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}base_to_torso">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}base_to_torso_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </actuator>
+    </transmission>   
+
+  </xacro:macro>
+
+</robot>

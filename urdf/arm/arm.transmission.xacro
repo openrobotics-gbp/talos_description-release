@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="talos_arm_transmission" params="prefix">
+
+    <transmission name="${prefix}torso_to_arm_shoulder_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}torso_to_arm_shoulder">
+       <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}torso_to_shoulder_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  
+    <transmission name="${prefix}arm_shoulder_to_arm_upper_arm_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}arm_shoulder_to_arm_upper_arm">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}arm_shoulder_to_arm_upper_arm_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </actuator>
+    </transmission>
+  
+    <transmission name="${prefix}arm_upper_arm_to_arm_elbow_bracket_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}arm_upper_arm_to_arm_elbow_bracket">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}arm_upper_arm_to_arm_elbow_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </actuator>
+    </transmission>
+  
+    <transmission name="${prefix}arm_elbow_bracket_to_arm_elbow_block_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}arm_elbow_bracket_to_arm_elbow_block">
+           <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}arm_elbow_bracket_to_arm_elbow_block_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </actuator>
+    </transmission>
+  
+    <transmission name="${prefix}arm_elbow_block_to_arm_lower_arm_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}arm_elbow_block_to_arm_lower_arm">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}arm_elbow_block_to_arm_lower_arm_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </actuator>
+    </transmission>
+
+   <transmission name="${prefix}arm_lower_arm_to_arm_wrist_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}arm_lower_arm_to_arm_wrist">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}arm_lower_arm_to_arm_wrist_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+      </actuator>
+    </transmission>
+
+  </xacro:macro>
+
+</robot>
